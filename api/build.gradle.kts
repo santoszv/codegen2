@@ -1,12 +1,14 @@
-allprojects {
-    group = "mx.com.inftel.codegen2"
-    version = "2.1.0-SNAPSHOT"
-}
-
 plugins {
-    kotlin("jvm") version "1.8.20"
+    java
     `maven-publish`
     signing
+}
+
+dependencies {
+
+    // Jakarta EE
+    compileOnly("jakarta.platform:jakarta.jakartaee-api:10.0.0")
+
 }
 
 java {
@@ -14,11 +16,7 @@ java {
         languageVersion.set(JavaLanguageVersion.of(11))
     }
     withSourcesJar()
-    //withJavadocJar()
-}
-
-kotlin {
-    jvmToolchain(11)
+    withJavadocJar()
 }
 
 tasks.withType<JavaCompile>().configureEach {
@@ -29,22 +27,15 @@ tasks.withType<Javadoc>().configureEach {
     options.encoding = "UTF-8"
 }
 
-val kotlinJavadoc by tasks.registering(Jar::class) {
-    archiveBaseName.set(project.name)
-    archiveClassifier.set("javadoc")
-    from(file("$projectDir/javadoc/README"))
-}
-
 publishing {
     repositories {
         maven {
-            setUrl(file("$projectDir/build/repo"))
+            setUrl(file("${rootProject.projectDir}/build/repo"))
         }
     }
 
     publications {
         create<MavenPublication>("codegen2") {
-            artifact(kotlinJavadoc)
             from(components["java"])
         }
     }
@@ -52,7 +43,7 @@ publishing {
     publications.withType<MavenPublication> {
         pom {
             name.set("${project.group}:${project.name}")
-            description.set("Codegen2 APT")
+            description.set("Codegen2 API")
             url.set("https://github.com/santoszv/codegen2")
             inceptionYear.set("2022")
             licenses {
