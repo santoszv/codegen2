@@ -72,7 +72,7 @@ class ClassModel(
 
     val codegenAnnotation: AnnotationMirror? by lazy {
         annotations.firstOrNull {
-            (it.annotationType.asElement() as TypeElement).qualifiedName.contentEquals("mx.com.inftel.codegen.Codegen")
+            (it.annotationType.asElement() as TypeElement).qualifiedName.contentEquals("mx.com.inftel.codegen2.Codegen")
         }
     }
 
@@ -129,10 +129,9 @@ class ClassModel(
 
     val methodsSuffix: String by lazy {
         if (codegenAnnotation != null) {
-            val methodsSuffix = processingEnvironment.elementUtils.getElementValuesWithDefaults(codegenAnnotation).filterKeys { it.simpleName.contentEquals("methods") }.values.firstOrNull()?.value as? String ?: ""
-            methodsSuffix.ifBlank { capitalizedName }
+            processingEnvironment.elementUtils.getElementValuesWithDefaults(codegenAnnotation).filterKeys { it.simpleName.contentEquals("methods") }.values.firstOrNull()?.value as? String ?: ""
         } else {
-            capitalizedName
+            ""
         }
     }
 

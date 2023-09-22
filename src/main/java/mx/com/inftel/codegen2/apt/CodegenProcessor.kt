@@ -25,14 +25,14 @@ import javax.lang.model.SourceVersion
 import javax.lang.model.element.TypeElement
 import javax.tools.Diagnostic
 
-@SupportedAnnotationTypes("mx.com.inftel.codegen.Codegen")
+@SupportedAnnotationTypes("mx.com.inftel.codegen2.Codegen")
 @SupportedSourceVersion(SourceVersion.RELEASE_11)
 class CodegenProcessor : AbstractProcessor() {
 
     private val generatedClasses: MutableSet<String> = mutableSetOf()
 
     override fun process(annotations: Set<TypeElement>, roundEnv: RoundEnvironment): Boolean {
-        val codegenAnnotation = processingEnv.elementUtils.getTypeElement("mx.com.inftel.codegen.Codegen")
+        val codegenAnnotation = processingEnv.elementUtils.getTypeElement("mx.com.inftel.codegen2.Codegen")
         val annotatedClasses = roundEnv.getElementsAnnotatedWith(codegenAnnotation)
         for (annotatedClass in annotatedClasses) {
             val classModel = ClassModel(processingEnv, annotatedClass as TypeElement)
