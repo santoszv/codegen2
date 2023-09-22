@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-package mx.com.inftel.codegen.apt
+package mx.com.inftel.codegen2.apt
 
-import mx.com.inftel.codegen.apt.model.TypeModel
+import mx.com.inftel.codegen2.apt.model.TypeModel
 import javax.lang.model.element.TypeElement
 import javax.lang.model.type.ArrayType
 import javax.lang.model.type.DeclaredType

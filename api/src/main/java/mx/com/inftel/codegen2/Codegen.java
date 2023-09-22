@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package mx.com.inftel.codegen;
+package mx.com.inftel.codegen2;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

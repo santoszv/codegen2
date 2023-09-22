@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package mx.com.inftel.codegen.apt.model
+package mx.com.inftel.codegen2.apt.model
 
 import javax.lang.model.element.AnnotationMirror
 

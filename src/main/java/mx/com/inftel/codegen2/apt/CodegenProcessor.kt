@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-package mx.com.inftel.codegen.apt
+package mx.com.inftel.codegen2.apt
 
-import mx.com.inftel.codegen.apt.model.ClassModel
+import mx.com.inftel.codegen2.apt.model.ClassModel
 import javax.annotation.processing.AbstractProcessor
 import javax.annotation.processing.RoundEnvironment
 import javax.annotation.processing.SupportedAnnotationTypes

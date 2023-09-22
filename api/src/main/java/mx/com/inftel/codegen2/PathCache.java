@@ -1,4 +1,4 @@
-package mx.com.inftel.codegen;
+package mx.com.inftel.codegen2;
 
 import jakarta.persistence.criteria.Path;
 import jakarta.persistence.criteria.Root;

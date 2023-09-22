@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package mx.com.inftel.codegen.apt.model
+package mx.com.inftel.codegen2.apt.model
 
 import java.beans.Introspector
 import javax.annotation.processing.ProcessingEnvironment
