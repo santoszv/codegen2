@@ -31,6 +31,7 @@ fun writeDTI(processingEnvironment: ProcessingEnvironment, bufferedWriter: Buffe
         bufferedWriter.appendLine("package ${classModel.packageName};")
     }
     bufferedWriter.appendLine()
+    writeJsonAnnotation(bufferedWriter, classModel)
     bufferedWriter.appendLine("public interface ${classModel.dtiName} {")
     for (propertyModel in classModel.properties) {
         when {
@@ -44,6 +45,13 @@ fun writeDTI(processingEnvironment: ProcessingEnvironment, bufferedWriter: Buffe
     writeCopyUpdateProperties(processingEnvironment, bufferedWriter, classModel)
     writeWrapper(processingEnvironment, bufferedWriter, classModel)
     bufferedWriter.appendLine("}")
+}
+
+private fun writeJsonAnnotation(bufferedWriter: BufferedWriter, classModel: ClassModel) {
+    bufferedWriter.append("@jakarta.json.bind.annotation.JsonbTypeInfo(")
+    bufferedWriter.append("key = \"@type\", value = @jakarta.json.bind.annotation.JsonbSubtype(")
+    bufferedWriter.append("alias = \"${classModel.qualifiedDtoName}\", type = ${classModel.qualifiedDtoName}.class")
+    bufferedWriter.appendLine("))")
 }
 
 private fun writeWrapper(processingEnvironment: ProcessingEnvironment, bufferedWriter: BufferedWriter, classModel: ClassModel) {

@@ -13,4 +13,4 @@ pluginManagement {
 
 rootProject.name = "codegen2"
 
-include("api")
+include("codegen2-api")

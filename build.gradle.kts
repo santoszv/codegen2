@@ -1,6 +1,6 @@
 allprojects {
     group = "mx.com.inftel.codegen2"
-    version = "2.2.0-SNAPSHOT"
+    version = "2.2.1-SNAPSHOT"
 }
 
 plugins {
